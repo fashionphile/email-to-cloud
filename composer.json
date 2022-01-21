@@ -1,5 +1,5 @@
 {
-    "name": "fashionphile/email-connect",
+    "name": "fashionphile/email-to-cloud",
     "description": "Connection to Fashionphil's email service",
     "type": "composer-plugin",
     "authors": [
@@ -20,7 +20,8 @@
     },
     "require": {
         "php": "^7.4|^8.0",
-        "guzzlehttp/guzzle": "^7.0"
+        "guzzlehttp/guzzle": "^7.0",
+        "vlucas/phpdotenv": "^3.6"
     },
     "require-dev": {
         "orchestra/testbench": "^3.7",
