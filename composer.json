@@ -1,7 +1,7 @@
 {
-    "name": "fashionphile/email-to-cloud",
-    "description": "Connection to Fashionphil's email service",
-    "type": "composer-plugin",
+    "name": "fashionphiletest/email-to-cloud",
+    "description": "Connection to Fashionphil's cloud email service",
+    "type": "library",
     "authors": [
         {
             "name": "Tanner Robertson",
@@ -20,12 +20,12 @@
     },
     "require": {
         "php": "^7.4|^8.0",
-        "guzzlehttp/guzzle": "^7.0",
-        "vlucas/phpdotenv": "^3.6"
+        "guzzlehttp/guzzle": ">=7.0",
+        "vlucas/phpdotenv": ">=3.6"
     },
     "require-dev": {
-        "orchestra/testbench": "^3.7",
+        "orchestra/testbench": ">=3.7",
         "mockery/mockery": "^1.2",
-        "phpunit/phpunit": "^7"
+        "phpunit/phpunit": ">=7"
     }
 }
