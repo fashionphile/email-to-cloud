@@ -71,7 +71,7 @@ class SendEmail
      */
     private function setConfig(string $environment): void
     {
-        $connectConfig = include(__DIR__.'/config/connectData.php');
+        $connectConfig = include(__DIR__.'/../config/connectData.php');
 
         switch ($environment) {
             case 'production':
