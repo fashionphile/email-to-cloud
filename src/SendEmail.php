@@ -8,8 +8,9 @@ use GuzzleHttp\Psr7\Response;
 
 class SendEmail
 {
-    public array $config;
-    public array $data;
+    public $config;
+    public $data;
+    private $shouldSend;
 
     /**
      * @throws Exception
@@ -32,6 +33,9 @@ class SendEmail
     {
         if ($message = $this->validate()) {
             throw new Exception(json_encode($message));
+        }
+        if($this->shouldSend) {
+            return Exception('Wont send client request $shouldSend === false');
         }
 
         return $this->postRequest();
@@ -66,7 +70,6 @@ class SendEmail
      *
      * @param  string  $environment
      * @return void
-     *
      * @throws Exception
      */
     private function setConfig(string $environment): void
@@ -83,7 +86,7 @@ class SendEmail
             case 'test':
             case 'local':
             case 'development':
-
+                $this->shouldSend = false;
                 $this->config = $connectConfig['development'];
                 break;
             default:
@@ -120,7 +123,6 @@ class SendEmail
      * Send Built request to trigger email
      *
      * @return Response
-     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     private function postRequest(): Response
@@ -164,5 +166,25 @@ class SendEmail
         }
 
         return $this->data;
+    }
+
+     /**
+     * Set current global should or should not send
+     *
+     * @return bool
+     */
+    public function getShouldSend(): bool
+    {
+        return $this->shouldSend;
+    }
+
+     /**
+     * Get current global of should or should not sent default false when testing
+     *
+     * @return void
+     */
+    public function setShouldSend(bool $bool): void
+    {
+        $this->shouldSend = $bool;
     }
 }
