@@ -83,6 +83,7 @@ class SendEmail
             case 'test':
             case 'local':
             case 'development':
+
                 $this->config = $connectConfig['development'];
                 break;
             default:
