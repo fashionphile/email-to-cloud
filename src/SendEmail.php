@@ -70,7 +70,6 @@ class SendEmail
      *
      * @param  string  $environment
      * @return void
-     * @throws Exception
      */
     private function setConfig(string $environment): void
     {
@@ -83,14 +82,9 @@ class SendEmail
             case 'staging':
                 $this->config = $connectConfig['staging'];
                 break;
-            case 'test':
-            case 'local':
-            case 'development':
+            default:
                 $this->shouldSend = false;
                 $this->config = $connectConfig['development'];
-                break;
-            default:
-                throw new Exception('unable to find environment type'.json_encode($this->data));
         }
 
     }
