@@ -10,7 +10,6 @@ class SendEmail
 {
     public $config;
     public $data;
-    private $shouldSend;
 
     /**
      * @throws Exception
@@ -33,9 +32,6 @@ class SendEmail
     {
         if ($message = $this->validate()) {
             throw new Exception(json_encode($message));
-        }
-        if($this->shouldSend) {
-            return Exception('Wont send client request $shouldSend === false');
         }
 
         return $this->postRequest();
@@ -83,7 +79,6 @@ class SendEmail
                 $this->config = $connectConfig['staging'];
                 break;
             default:
-                $this->shouldSend = false;
                 $this->config = $connectConfig['development'];
         }
 
@@ -160,25 +155,5 @@ class SendEmail
         }
 
         return $this->data;
-    }
-
-     /**
-     * Set current global should or should not send
-     *
-     * @return bool
-     */
-    public function getShouldSend(): bool
-    {
-        return $this->shouldSend;
-    }
-
-     /**
-     * Get current global of should or should not sent default false when testing
-     *
-     * @return void
-     */
-    public function setShouldSend(bool $bool): void
-    {
-        $this->shouldSend = $bool;
     }
 }

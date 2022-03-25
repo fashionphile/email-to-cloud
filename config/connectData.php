@@ -2,7 +2,7 @@
 
 return [
     'production' => [
-        'url' => $_ENV['EMAIL_CLOUD_URL_PROD'] ?? 'https://production-apigateway.fashionphile.com/transactional/journey',
+        'url' => $_ENV['EMAIL_CLOUD_URL_PROD'] ?? 'https://apigateway.fashionphile.com/transactional/journey',
         'apiKey' => $_ENV['APP_ENV_PRODUCTION'] ?? 'EMAIL_CLOUD_KEY'
     ],
     'staging' => [
