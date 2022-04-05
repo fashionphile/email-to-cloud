@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Jobs\Mail\SalesForceMarketingCloud;
-
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 
-class EmailBuilder
+class SendEmail
 {
     public $data;
     public $url;
