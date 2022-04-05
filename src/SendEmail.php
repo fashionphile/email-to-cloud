@@ -13,7 +13,7 @@ class SendEmail
 
     public function send()
     {
-        if ($message = $this->validate() || $this->shouldNotSend()) {
+        if ($message = $this->validate()) {
             return json_encode($message ?: 'Should not send email');
         }
 
@@ -40,7 +40,7 @@ class SendEmail
         ];
 
         foreach ($requiredData as $key => $missingMessage) {
-            if (!array_key_exists($key, $this->getData())) {
+            if (!array_key_exists($key, $this->data)) {
                 $message[$key] = $missingMessage;
             }
         }
