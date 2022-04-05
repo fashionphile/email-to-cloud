@@ -1,5 +1,7 @@
 <?php
 
+namespace FPemail;
+
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 
@@ -9,7 +11,7 @@ class SendEmail
     public $url;
     public $headers;
 
-    public function sendEmail()
+    public function send()
     {
         if ($message = $this->validate() || $this->shouldNotSend()) {
             return json_encode($message ?: 'Should not send email');
