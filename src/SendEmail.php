@@ -14,7 +14,7 @@ class SendEmail
     public function send()
     {
         if ($message = $this->validate()) {
-            return json_encode($message ?: 'Should not send email');
+            return json_encode($message);
         }
 
         return $this->postRequest();
@@ -68,17 +68,17 @@ class SendEmail
         $this->data['data'] = $emailSpecificData;
     }
 
-    public function emailDefinitionKey(string $definitionKey)
+    public function emailDefinitionKey(string $definitionKey): void
     {
         $this->data['definitionKey'] = $definitionKey;
     }
 
-    public function setHeaders(array $headers)
+    public function setHeaders(array $headers): void
     {
         $this->headers = $headers;
     }
 
-    public function setUrl(string $url)
+    public function setUrl(string $url): void
     {
         $this->url = $url;
     }
