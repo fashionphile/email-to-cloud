@@ -34,9 +34,8 @@ class SendEmail
     {
         $message = [];
         $requiredData = [
-            'definitionKey' => 'definitionKey missing, this is a marketing cloud email key.',
-            'email' => 'email missing, user\'s email that is going to get sent.',
-            'user_id' => 'user_id missing, user id missing required for email service.',
+            'definitionKey' => 'DefinitionKey missing, this is a marketing cloud email key.',
+            'email' => 'Email missing, user\'s email that is going to get sent.',
         ];
 
         foreach ($requiredData as $key => $missingMessage) {
@@ -54,6 +53,16 @@ class SendEmail
     public function to(string $email, int $userId): void
     {
         $this->data['email'] = $email;
+        $this->data['user_id'] = $userId;
+    }
+
+    public function toEmail(string $email): void
+    {
+        $this->data['email'] = $email;
+    }
+
+    public function toUserId(int $userId): void
+    {
         $this->data['user_id'] = $userId;
     }
 
