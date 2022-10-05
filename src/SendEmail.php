@@ -24,6 +24,10 @@ class SendEmail
     {
         $client = new Client();
 
+        if (!($this->data['data'] && count($this->data['data']))) {
+            $this->data['data'] = (object)[];
+        }
+
         return $client->request('POST', $this->url, [
             'headers' => $this->headers,
             'body' => json_encode($this->data, true)
@@ -72,10 +76,8 @@ class SendEmail
         $this->setUrl($guzzle['url']);
     }
 
-    public function buildEmailContent(object $emailSpecificData = null): void
+    public function buildEmailContent(array $emailSpecificData = []): void
     {
-        $emailSpecificData = $emailSpecificData ?? (object)[];
-
         $this->data['data'] = $emailSpecificData;
     }
 
