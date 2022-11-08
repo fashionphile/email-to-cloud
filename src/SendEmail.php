@@ -74,7 +74,7 @@ class SendEmail
         $this->setUrl($guzzle['url']);
     }
 
-    public function buildEmailContent(object $emailSpecificData = null): void
+    public function buildEmailContent(array $emailSpecificData = []): void
     {
         $emailSpecificData = $emailSpecificData ?? (object)[];
 
