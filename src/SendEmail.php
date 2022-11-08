@@ -24,7 +24,7 @@ class SendEmail
     {
         $client = new Client();
 
-        
+
         return $client->request('POST', $this->url, [
             'connect_timeout' => 10.00,
             'headers' => $this->headers,
